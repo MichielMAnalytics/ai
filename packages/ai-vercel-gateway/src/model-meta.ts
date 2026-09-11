@@ -42,7 +42,6 @@ export const VERCEL_GATEWAY_CHAT_MODELS = [
   'alibaba/qwen3.8-2.4t-a95b',
   'alibaba/qwen3.8-27b',
   'alibaba/qwen3.8-flash',
-  'alibaba/qwen3.8-flash-next',
   'alibaba/qwen3.8-max',
   'alibaba/qwen3.8-max-0902',
   'amazon/nova-2-lite',
@@ -649,16 +648,6 @@ export type VercelGatewayChatModelProviderOptionsByName = {
       | 'include_reasoning'
     >
   'alibaba/qwen3.8-flash': VercelGatewayCommonOptions &
-    Pick<
-      VercelGatewayBaseOptions,
-      | 'max_tokens'
-      | 'max_output_tokens'
-      | 'temperature'
-      | 'stop'
-      | 'reasoning'
-      | 'include_reasoning'
-    >
-  'alibaba/qwen3.8-flash-next': VercelGatewayCommonOptions &
     Pick<
       VercelGatewayBaseOptions,
       | 'max_tokens'
@@ -2674,7 +2663,6 @@ export type VercelGatewayModelInputModalitiesByName = {
   'alibaba/qwen3.8-2.4t-a95b': readonly ['text', 'image']
   'alibaba/qwen3.8-27b': readonly ['text', 'image', 'document', 'video']
   'alibaba/qwen3.8-flash': readonly ['text', 'image', 'document']
-  'alibaba/qwen3.8-flash-next': readonly ['text', 'image']
   'alibaba/qwen3.8-max': readonly ['text', 'image']
   'alibaba/qwen3.8-max-0902': readonly ['text', 'image', 'document']
   'amazon/nova-2-lite': readonly ['text', 'image', 'document']

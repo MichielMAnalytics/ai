@@ -256,11 +256,11 @@ const _MOONSHOTAI_KIMI_LATEST = {
   pricing: {
     text: {
       input: {
-        normal: 2.4,
-        cached: 0.24,
+        normal: 2.34,
+        cached: 0.261,
       },
       output: {
-        normal: 12,
+        normal: 11.7,
       },
     },
     image: 0,
@@ -421,15 +421,15 @@ const _Z_AI_GLM_LATEST = {
     ],
   },
   context_window: 1310720,
-  max_output_tokens: 128000,
+  max_output_tokens: 943718,
   pricing: {
     text: {
       input: {
-        normal: 1.085,
-        cached: 0.2015,
+        normal: 0.97,
+        cached: 0.194,
       },
       output: {
-        normal: 3.41,
+        normal: 3.3077,
       },
     },
     image: 0,
@@ -2063,11 +2063,11 @@ const DEEPSEEK_DEEPSEEK_CHAT_V3_0324 = {
   pricing: {
     text: {
       input: {
-        normal: 0.29,
-        cached: 0.11,
+        normal: 0.25,
+        cached: 0,
       },
       output: {
-        normal: 1.14,
+        normal: 1,
       },
     },
     image: 0,
@@ -2568,15 +2568,15 @@ const DEEPSEEK_DEEPSEEK_V4_PRO_0813 = {
     ],
   },
   context_window: 1048576,
-  max_output_tokens: 384000,
+  max_output_tokens: 943718,
   pricing: {
     text: {
       input: {
-        normal: 1.0494,
-        cached: 0.03498,
+        normal: 0.66,
+        cached: 0.066,
       },
       output: {
-        normal: 3.1482,
+        normal: 1.98,
       },
     },
     image: 0,
@@ -2626,11 +2626,13 @@ const DEEPSEEK_DEEPSEEK_V4_1_FLASH = {
     output: ['text'],
     supports: [
       'frequencyPenalty',
+      'logitBias',
       'logprobs',
       'maxCompletionTokens',
       'presencePenalty',
       'reasoning',
       'responseFormat',
+      'seed',
       'stop',
       'temperature',
       'toolChoice',
@@ -2643,11 +2645,11 @@ const DEEPSEEK_DEEPSEEK_V4_1_FLASH = {
   pricing: {
     text: {
       input: {
-        normal: 0.3,
-        cached: 0.006,
+        normal: 0.15,
+        cached: 0.003,
       },
       output: {
-        normal: 1.2,
+        normal: 0.6,
       },
     },
     image: 0,
@@ -3846,15 +3848,15 @@ const GOOGLE_GEMMA_4_26B_A4B_IT = {
     ],
   },
   context_window: 262144,
-  max_output_tokens: 16384,
+  max_output_tokens: 32768,
   pricing: {
     text: {
       input: {
-        normal: 0.07,
+        normal: 0.042,
         cached: 0,
       },
       output: {
-        normal: 0.34,
+        normal: 0.22,
       },
     },
     image: 0,
@@ -4360,6 +4362,41 @@ const INCLUSIONAI_LING_3_0_FLASH_SANTE_FREE = {
     image: 0,
   },
 } as const
+const INCLUSIONAI_LING_3_0_FLASH_VL_FREE = {
+  id: 'inclusionai/ling-3.0-flash-vl:free',
+  name: 'inclusionAI: Ling 3.0 Flash VL (free)',
+  supports: {
+    input: ['text', 'image', 'video'],
+    output: ['text'],
+    supports: [
+      'frequencyPenalty',
+      'logprobs',
+      'maxCompletionTokens',
+      'presencePenalty',
+      'reasoning',
+      'seed',
+      'stop',
+      'temperature',
+      'toolChoice',
+      'topLogprobs',
+      'topP',
+    ],
+  },
+  context_window: 262144,
+  max_output_tokens: 32768,
+  pricing: {
+    text: {
+      input: {
+        normal: 0,
+        cached: 0,
+      },
+      output: {
+        normal: 0,
+      },
+    },
+    image: 0,
+  },
+} as const
 const KWAIPILOT_KAT_CODER_PRO_V2 = {
   id: 'kwaipilot/kat-coder-pro-v2',
   name: 'Kwaipilot: KAT-Coder-Pro V2',
@@ -4554,15 +4591,15 @@ const META_LLAMA_LLAMA_3_1_70B_INSTRUCT = {
     ],
   },
   context_window: 131072,
-  max_output_tokens: 16384,
+  max_output_tokens: 8192,
   pricing: {
     text: {
       input: {
-        normal: 0.4,
+        normal: 0.72,
         cached: 0,
       },
       output: {
-        normal: 0.4,
+        normal: 0.72,
       },
     },
     image: 0,
@@ -6468,11 +6505,11 @@ const MOONSHOTAI_KIMI_K3 = {
   pricing: {
     text: {
       input: {
-        normal: 3,
-        cached: 0.3,
+        normal: 2.34,
+        cached: 0.261,
       },
       output: {
-        normal: 15,
+        normal: 11.7,
       },
     },
     image: 0,
@@ -6802,6 +6839,7 @@ const NVIDIA_NEMOTRON_3_SUPER_120B_A12B = {
     supports: [
       'frequencyPenalty',
       'logitBias',
+      'logprobs',
       'maxCompletionTokens',
       'presencePenalty',
       'reasoning',
@@ -6810,6 +6848,7 @@ const NVIDIA_NEMOTRON_3_SUPER_120B_A12B = {
       'stop',
       'temperature',
       'toolChoice',
+      'topLogprobs',
       'topP',
     ],
   },
@@ -12226,11 +12265,57 @@ const RELACE_RELACE_SEARCH = {
     image: 0,
   },
 } as const
+const SAKANA_FUGU_MAX = {
+  id: 'sakana/fugu-max',
+  name: 'Sakana: Fugu Max',
+  supports: {
+    input: ['text', 'image', 'document'],
+    output: ['text'],
+    supports: ['reasoning', 'toolChoice'],
+  },
+  context_window: 1000000,
+  max_output_tokens: 128000,
+  pricing: {
+    text: {
+      input: {
+        normal: 2,
+        cached: 0.25,
+      },
+      output: {
+        normal: 6,
+      },
+    },
+    image: 0,
+  },
+} as const
 const SAKANA_FUGU_ULTRA = {
   id: 'sakana/fugu-ultra',
   name: 'Sakana: Fugu Ultra',
   supports: {
     input: ['text', 'image'],
+    output: ['text'],
+    supports: ['reasoning', 'toolChoice'],
+  },
+  context_window: 1000000,
+  max_output_tokens: 128000,
+  pricing: {
+    text: {
+      input: {
+        normal: 5,
+        cached: 0.5,
+      },
+      output: {
+        normal: 30,
+      },
+    },
+    image: 0,
+  },
+} as const
+const SAKANA_FUGU_ULTRA_V2 = {
+  id: 'sakana/fugu-ultra-v2',
+  name: 'Sakana: Fugu Ultra v2',
+  supports: {
+    input: ['text', 'image', 'document'],
     output: ['text'],
     supports: ['reasoning', 'toolChoice'],
   },
@@ -12875,14 +12960,12 @@ const THINKINGMACHINES_INKLING_SMALL_FREE = {
     output: ['text'],
     supports: [
       'frequencyPenalty',
-      'logprobs',
       'maxCompletionTokens',
       'presencePenalty',
       'reasoning',
       'seed',
       'stop',
       'temperature',
-      'topLogprobs',
       'topP',
     ],
   },
@@ -13057,11 +13140,11 @@ const UPSTAGE_SOLAR_PRO4 = {
   pricing: {
     text: {
       input: {
-        normal: 0.03,
-        cached: 0.006,
+        normal: 0.09,
+        cached: 0.018,
       },
       output: {
-        normal: 0.12,
+        normal: 0.36,
       },
     },
     image: 0,
@@ -13616,7 +13699,7 @@ const Z_AI_GLM_4_7_FLASH = {
       'topP',
     ],
   },
-  context_window: 202752,
+  context_window: 200000,
   max_output_tokens: 117964,
   pricing: {
     text: {
@@ -13639,7 +13722,6 @@ const Z_AI_GLM_5 = {
     output: ['text'],
     supports: [
       'frequencyPenalty',
-      'logitBias',
       'logprobs',
       'maxCompletionTokens',
       'presencePenalty',
@@ -14968,11 +15050,13 @@ export type OpenRouterModelOptionsByName = {
     Pick<
       OpenRouterBaseOptions,
       | 'frequencyPenalty'
+      | 'logitBias'
       | 'logprobs'
       | 'maxCompletionTokens'
       | 'presencePenalty'
       | 'reasoning'
       | 'responseFormat'
+      | 'seed'
       | 'stop'
       | 'temperature'
       | 'toolChoice'
@@ -15604,6 +15688,21 @@ export type OpenRouterModelOptionsByName = {
       | 'topP'
     >
   [INCLUSIONAI_LING_3_0_FLASH_SANTE_FREE.id]: OpenRouterCommonOptions &
+    Pick<
+      OpenRouterBaseOptions,
+      | 'frequencyPenalty'
+      | 'logprobs'
+      | 'maxCompletionTokens'
+      | 'presencePenalty'
+      | 'reasoning'
+      | 'seed'
+      | 'stop'
+      | 'temperature'
+      | 'toolChoice'
+      | 'topLogprobs'
+      | 'topP'
+    >
+  [INCLUSIONAI_LING_3_0_FLASH_VL_FREE.id]: OpenRouterCommonOptions &
     Pick<
       OpenRouterBaseOptions,
       | 'frequencyPenalty'
@@ -16593,6 +16692,7 @@ export type OpenRouterModelOptionsByName = {
       OpenRouterBaseOptions,
       | 'frequencyPenalty'
       | 'logitBias'
+      | 'logprobs'
       | 'maxCompletionTokens'
       | 'presencePenalty'
       | 'reasoning'
@@ -16601,6 +16701,7 @@ export type OpenRouterModelOptionsByName = {
       | 'stop'
       | 'temperature'
       | 'toolChoice'
+      | 'topLogprobs'
       | 'topP'
     >
   [NVIDIA_NEMOTRON_3_SUPER_120B_A12B_FREE.id]: OpenRouterCommonOptions &
@@ -18670,7 +18771,11 @@ export type OpenRouterModelOptionsByName = {
       | 'toolChoice'
       | 'topP'
     >
+  [SAKANA_FUGU_MAX.id]: OpenRouterCommonOptions &
+    Pick<OpenRouterBaseOptions, 'reasoning' | 'toolChoice'>
   [SAKANA_FUGU_ULTRA.id]: OpenRouterCommonOptions &
+    Pick<OpenRouterBaseOptions, 'reasoning' | 'toolChoice'>
+  [SAKANA_FUGU_ULTRA_V2.id]: OpenRouterCommonOptions &
     Pick<OpenRouterBaseOptions, 'reasoning' | 'toolChoice'>
   [SAKANA_SAKANA_NAMAZU.id]: OpenRouterCommonOptions &
     Pick<OpenRouterBaseOptions, 'reasoning' | 'toolChoice'>
@@ -18910,14 +19015,12 @@ export type OpenRouterModelOptionsByName = {
     Pick<
       OpenRouterBaseOptions,
       | 'frequencyPenalty'
-      | 'logprobs'
       | 'maxCompletionTokens'
       | 'presencePenalty'
       | 'reasoning'
       | 'seed'
       | 'stop'
       | 'temperature'
-      | 'topLogprobs'
       | 'topP'
     >
   [THINKINGMACHINES_INKLING_BATCH.id]: OpenRouterCommonOptions &
@@ -19216,7 +19319,6 @@ export type OpenRouterModelOptionsByName = {
     Pick<
       OpenRouterBaseOptions,
       | 'frequencyPenalty'
-      | 'logitBias'
       | 'logprobs'
       | 'maxCompletionTokens'
       | 'presencePenalty'
@@ -19599,6 +19701,9 @@ export type OpenRouterModelInputModalitiesByName = {
   [INCLUSIONAI_LING_3_0_FLASH_FIN.id]: ReadonlyArray<'text'>
   [INCLUSIONAI_LING_3_0_FLASH_FIN_FREE.id]: ReadonlyArray<'text'>
   [INCLUSIONAI_LING_3_0_FLASH_SANTE_FREE.id]: ReadonlyArray<'text'>
+  [INCLUSIONAI_LING_3_0_FLASH_VL_FREE.id]: ReadonlyArray<
+    'text' | 'image' | 'video'
+  >
   [KWAIPILOT_KAT_CODER_PRO_V2.id]: ReadonlyArray<'text'>
   [KWAIPILOT_KAT_CODER_PRO_V2_5.id]: ReadonlyArray<'text'>
   [LIQUID_LFM_2_5_2_6B_FREE.id]: ReadonlyArray<'text'>
@@ -19876,7 +19981,9 @@ export type OpenRouterModelInputModalitiesByName = {
   [REKAAI_REKA_FLASH_3.id]: ReadonlyArray<'text'>
   [RELACE_RELACE_APPLY_3.id]: ReadonlyArray<'text'>
   [RELACE_RELACE_SEARCH.id]: ReadonlyArray<'text'>
+  [SAKANA_FUGU_MAX.id]: ReadonlyArray<'text' | 'image' | 'document'>
   [SAKANA_FUGU_ULTRA.id]: ReadonlyArray<'text' | 'image'>
+  [SAKANA_FUGU_ULTRA_V2.id]: ReadonlyArray<'text' | 'image' | 'document'>
   [SAKANA_SAKANA_NAMAZU.id]: ReadonlyArray<'text' | 'image' | 'document'>
   [SAO10K_L3_LUNARIS_8B.id]: ReadonlyArray<'text'>
   [SAO10K_L3_1_EURYALE_70B.id]: ReadonlyArray<'text'>
@@ -20073,6 +20180,7 @@ export const OPENROUTER_CHAT_MODELS = [
   INCLUSIONAI_LING_3_0_FLASH_FIN.id,
   INCLUSIONAI_LING_3_0_FLASH_FIN_FREE.id,
   INCLUSIONAI_LING_3_0_FLASH_SANTE_FREE.id,
+  INCLUSIONAI_LING_3_0_FLASH_VL_FREE.id,
   KWAIPILOT_KAT_CODER_PRO_V2.id,
   KWAIPILOT_KAT_CODER_PRO_V2_5.id,
   LIQUID_LFM_2_5_2_6B_FREE.id,
@@ -20314,7 +20422,9 @@ export const OPENROUTER_CHAT_MODELS = [
   REKAAI_REKA_FLASH_3.id,
   RELACE_RELACE_APPLY_3.id,
   RELACE_RELACE_SEARCH.id,
+  SAKANA_FUGU_MAX.id,
   SAKANA_FUGU_ULTRA.id,
+  SAKANA_FUGU_ULTRA_V2.id,
   SAKANA_SAKANA_NAMAZU.id,
   SAO10K_L3_LUNARIS_8B.id,
   SAO10K_L3_1_EURYALE_70B.id,
@@ -20384,6 +20494,7 @@ export const OPENROUTER_VIDEO_MODELS = [
   'alibaba/wan-3.0',
   'alibaba/wan-3.0-prime',
   'black-forest-labs/flux-3-video',
+  'black-forest-labs/flux-video-edit',
   'black-forest-labs/flux-video-upscale',
   'bytedance/seedance-1-5-pro',
   'bytedance/seedance-2.0',
@@ -20522,6 +20633,16 @@ export const OPENROUTER_VIDEO_MODEL_META = {
     frameImages: ['first_frame', 'last_frame'],
     sizes: null,
     generateAudio: true,
+    seed: false,
+  },
+  'black-forest-labs/flux-video-edit': {
+    name: 'Black Forest Labs: FLUX Video Edit',
+    durations: null,
+    resolutions: null,
+    aspectRatios: null,
+    frameImages: null,
+    sizes: null,
+    generateAudio: false,
     seed: false,
   },
   'black-forest-labs/flux-video-upscale': {
@@ -20932,6 +21053,7 @@ export const OPENROUTER_COMBINED_TOOLS_AND_SCHEMA_MODELS: ReadonlySet<string> =
     DEEPSEEK_DEEPSEEK_V4_PRO.id,
     DEEPSEEK_DEEPSEEK_V4_PRO_0813.id,
     DEEPSEEK_DEEPSEEK_V4_PRO_0813_BATCH.id,
+    DEEPSEEK_DEEPSEEK_V4_1_FLASH.id,
     DOTS_STUDIO_DOTS_3_NOTE_PREVIEW_FREE.id,
     GOOGLE_GEMINI_2_5_FLASH.id,
     GOOGLE_GEMINI_2_5_FLASH_LITE.id,
@@ -21022,6 +21144,7 @@ export const OPENROUTER_COMBINED_TOOLS_AND_SCHEMA_MODELS: ReadonlySet<string> =
     NEX_AGI_NEX_N2_5_MINI_FREE.id,
     NEX_AGI_NEX_N2_5_PRO_FREE.id,
     NVIDIA_NEMOTRON_3_NANO_30B_A3B.id,
+    NVIDIA_NEMOTRON_3_SUPER_120B_A12B.id,
     NVIDIA_NEMOTRON_3_SUPER_120B_A12B_FREE.id,
     NVIDIA_NEMOTRON_3_ULTRA_550B_A55B.id,
     NVIDIA_NEMOTRON_3_5_LIGHTNING.id,
@@ -21158,7 +21281,9 @@ export const OPENROUTER_COMBINED_TOOLS_AND_SCHEMA_MODELS: ReadonlySet<string> =
     QWEN_QWEN3_8_FLASH.id,
     QWEN_QWEN3_8_MAX_0902.id,
     REKAAI_REKA_EDGE.id,
+    SAKANA_FUGU_MAX.id,
     SAKANA_FUGU_ULTRA.id,
+    SAKANA_FUGU_ULTRA_V2.id,
     SAKANA_SAKANA_NAMAZU.id,
     SAO10K_L3_1_EURYALE_70B.id,
     STEPFUN_STEP_3_7_FLASH.id,
