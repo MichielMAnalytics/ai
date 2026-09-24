@@ -222,7 +222,9 @@ describe('BoxdHandle.fs', () => {
       { name: 'link', path: '/workspace/link', type: 'file' },
       { name: 'sub', path: '/workspace/sub', type: 'dir' },
     ])
-    expect(bashArg(execCalls[0]!)).toContain(`ls -1Ap '/home/boxd/workspace/'`)
+    expect(bashArg(execCalls[0]!)).toContain(
+      `ls -1Ap -- '/home/boxd/workspace/'`,
+    )
   })
 
   it('answers exists from the exit code and surfaces failures of mkdir/remove/rename', async () => {
@@ -433,6 +435,14 @@ describe('BoxdHandle.ports / snapshot / fork / destroy', () => {
     expect(fork.provider).toBe('boxd')
     await fork.process.exec('env')
     expect(execCalls[0]?.env).toEqual({ SECRET: 's' })
+  })
+
+  it('fork() deletes the fork when it never becomes ready', async () => {
+    const { handle, raw } = makeHandle()
+    raw.machines.waitUntilReady.mockRejectedValueOnce(new Error('not ready'))
+
+    await expect(handle.fork()).rejects.toThrow('not ready')
+    expect(raw.machines.delete).toHaveBeenCalledWith('vm-fork')
   })
 
   it('destroy() deletes the machine', async () => {

@@ -325,7 +325,7 @@ export class BoxdHandle implements SandboxHandle {
         await this.client.machines.files.upload(this.id, this.abs(p), data)
       },
       list: async (p) => {
-        const r = await this.exec(`ls -1Ap ${q(this.abs(p))}`)
+        const r = await this.exec(`ls -1Ap -- ${q(this.abs(p))}`)
         if (r.exitCode !== 0) throw new Error(`list failed: ${errText(r)}`)
         const base = p.replace(/\/$/, '')
         return r.stdout
@@ -343,15 +343,17 @@ export class BoxdHandle implements SandboxHandle {
       },
       lstat: async (p) => this.lstat(this.abs(p)),
       mkdir: async (p) => {
-        const r = await this.exec(`mkdir -p ${q(this.abs(p))}`)
+        const r = await this.exec(`mkdir -p -- ${q(this.abs(p))}`)
         if (r.exitCode !== 0) throw new Error(`mkdir failed: ${errText(r)}`)
       },
       remove: async (p) => {
-        const r = await this.exec(`rm -rf ${q(this.abs(p))}`)
+        const r = await this.exec(`rm -rf -- ${q(this.abs(p))}`)
         if (r.exitCode !== 0) throw new Error(`remove failed: ${errText(r)}`)
       },
       rename: async (from, to) => {
-        const r = await this.exec(`mv ${q(this.abs(from))} ${q(this.abs(to))}`)
+        const r = await this.exec(
+          `mv -- ${q(this.abs(from))} ${q(this.abs(to))}`,
+        )
         if (r.exitCode !== 0) throw new Error(`rename failed: ${errText(r)}`)
       },
       exists: async (p) => {
@@ -548,8 +550,14 @@ export class BoxdHandle implements SandboxHandle {
     const machine = await this.client.machines.fork(this.id, {
       name: `${this.machineName}-fork-${randomUUID().replace(/-/g, '').slice(0, 8)}`,
     })
-    const ready = await this.client.machines.waitUntilReady(machine.id)
-    return new BoxdHandle({ ...this.deps, machine: ready, env: this.envVars })
+    try {
+      const ready = await this.client.machines.waitUntilReady(machine.id)
+      return new BoxdHandle({ ...this.deps, machine: ready, env: this.envVars })
+    } catch (error) {
+      // The caller never gets a handle, so nobody else can delete this fork.
+      await this.client.machines.delete(machine.id).catch(() => {})
+      throw error
+    }
   }
 
   private orgParams(): { org?: string } {
